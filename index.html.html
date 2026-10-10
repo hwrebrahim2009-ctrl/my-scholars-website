@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guiding Lights | علماء خدموا الإسلام</title>
+
+<style>
+:root {
+  --navy:#173b43;
+  --teal:#2f7775;
+  --mint:#e7f2ee;
+  --cream:#fbf8f0;
+  --gold:#c69b55;
+  --ink:#24383b;
+  --muted:#647477;
+  --line:#dce7e2;
+}
+
+* { box-sizing:border-box; scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Arial,Tahoma,sans-serif;
+  line-height:1.85;
+}
+
+.hero {
+  background:linear-gradient(130deg,#173b43,#286765 65%,#6c9990);
+  color:white;
+  text-align:center;
+  padding:65px 20px;
+}
+
+.hero h1 {
+  font-family:Georgia,serif;
+  font-size:clamp(2.3rem,6vw,4.2rem);
+  line-height:1.25;
+  margin:18px 0;
+}
+
+.hero p {
+  max-width:760px;
+  margin:auto;
+  color:#e7f1ef;
+}
+
+.eyebrow {
+  color:#e8d1a7;
+  font-size:.8rem;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+.ornament { color:#e6c991; font-size:1.6rem; margin-top:20px; }
+
+nav {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  background:white;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:5;
+  border-bottom:1px solid var(--line);
+}
+
+nav a {
+  color:var(--navy);
+  text-decoration:none;
+  padding:8px 13px;
+  border-radius:20px;
+  font-size:.9rem;
+  font-weight:bold;
+}
+
+nav a:hover { background:var(--mint); }
+
+#languageBtn {
+  background:var(--teal);
+  color:white;
+  border:0;
+  border-radius:20px;
+  padding:9px 17px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+main {
+  max-width:1160px;
+  margin:auto;
+  padding:40px 20px 65px;
+}
+
+.intro {
+  text-align:center;
+  max-width:800px;
+  margin:0 auto 30px;
+}
+
+.intro h2 {
+  font-family:Georgia,serif;
+  font-size:2rem;
+  font-weight:500;
+  color:var(--navy);
+  margin:0 0 10px;
+}
+
+.intro p { color:var(--muted); }
+
+.tools {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:30px 0 24px;
+}
+
+.search-wrap { flex:1; min-width:220px; }
+
+#search {
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:white;
+  outline:none;
+}
+
+#search:focus {
+  border-color:var(--teal);
+  box-shadow:0 0 0 3px #2f77751a;
+}
+
+.count { color:var(--muted); font-size:.9rem; }
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+
+.scholar {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 30px #173b4310;
+  transition:transform .2s,box-shadow .2s;
+}
+
+.scholar:hover {
+  transform:translateY(-4px);
+  box-shadow:0 18px 35px #173b4320;
+}
+
+.card-top {
+  padding:24px;
+  background:linear-gradient(115deg,#edf5f0,#f9f6ec);
+  border-bottom:1px solid var(--line);
+}
+
+.number {
+  color:var(--teal);
+  font-size:.75rem;
+  letter-spacing:2px;
+  font-weight:bold;
+}
+
+.card-top h3 {
+  color:var(--navy);
+  font-family:Georgia,serif;
+  font-size:1.6rem;
+  line-height:1.5;
+  margin:10px 0 5px;
+}
+
+.dates { color:var(--muted); font-size:.9rem; }
+
+.badge {
+  display:inline-block;
+  margin-top:12px;
+  padding:5px 11px;
+  border-radius:30px;
+  background:#dcece6;
+  color:#275f5b;
+  font-size:.75rem;
+  font-weight:bold;
+}
+
+.card-body {
+  padding:23px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.section h4 {
+  color:var(--teal);
+  font-size:.8rem;
+  letter-spacing:1px;
+  margin:0 0 9px;
+}
+
+.section p {
+  margin:0;
+  color:#405255;
+  font-size:.94rem;
+  line-height:2;
+  white-space:pre-line;
+}
+
+.works {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.work {
+  display:inline-block;
+  padding:6px 10px;
+  background:#f4f6f2;
+  border:1px solid #e4ebe4;
+  border-radius:8px;
+  color:#445958;
+  font-size:.82rem;
+}
+
+.legacy {
+  background:#fbf8f0;
+  border-inline-start:3px solid var(--gold);
+  padding:15px;
+  border-radius:8px;
+}
+
+.no-results {
+  display:none;
+  text-align:center;
+  padding:35px;
+  color:var(--muted);
+}
+
+footer {
+  background:var(--navy);
+  color:#e9f2ef;
+  text-align:center;
+  padding:30px 20px;
+  font-size:.9rem;
+}
+
+footer strong { color:#e6c991; }
+
+[hidden] { display:none !important; }
+
+html[dir="rtl"] body { font-family:Tahoma,Arial,sans-serif; }
+
+html[dir="rtl"] .hero h1,
+html[dir="rtl"] .intro h2,
+html[dir="rtl"] .card-top h3 {
+  font-family:Tahoma,Arial,sans-serif;
+}
+
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .number,
+html[dir="rtl"] .section h4 {
+  letter-spacing:0;
+}
+
+html[dir="rtl"] .card-top,
+html[dir="rtl"] .card-body { text-align:right; }
+
+@media(max-width:760px) {
+  .grid { grid-template-columns:1fr; }
+  main { padding:30px 14px 50px; }
+  .hero { padding:48px 18px; }
+  .count { width:100%; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    scroll-behavior:auto !important;
+    transition:none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero" id="home">
+  <div class="eyebrow" data-en="KNOWLEDGE • FAITH • LEGACY"
+       data-ar="العلم • الإيمان • الأثر">
+    KNOWLEDGE • FAITH • LEGACY
+  </div>
+
+  <h1 data-en="Guiding Lights of Islamic Scholarship"
+      data-ar="أعلام أضاءوا دروب العلم الإسلامي">
+    Guiding Lights of Islamic Scholarship
+  </h1>
+
+  <p data-en="Discover eight influential Muslim scholars whose dedication to Islamic knowledge shaped generations through Hadith, Qur'anic interpretation, jurisprudence, history, and spirituality."
+     data-ar="تعرّف على ثمانية من علماء المسلمين الذين أسهموا بعلمهم في خدمة الإسلام عبر الحديث والتفسير والفقه والتاريخ والعلوم الروحية، وتركوا أثرًا ممتدًا عبر الأجيال.">
+    Discover eight influential Muslim scholars whose dedication to Islamic knowledge shaped generations.
+  </p>
+
+  <div class="ornament">✦ ✧ ✦</div>
+</header>
+
+<nav>
+  <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+  <a href="#scholars" data-en="The Scholars" data-ar="العلماء">The Scholars</a>
+  <a href="#about" data-en="About the Project" data-ar="عن المشروع">About the Project</a>
+  <button id="languageBtn" type="button">العربية</button>
+</nav>
+
+<main>
+  <section class="intro" id="scholars">
+    <h2 data-en="Meet the Scholars" data-ar="تعرّف على العلماء">Meet the Scholars</h2>
+    <p data-en="Explore the major works, academic specializations, core subject matters, and lasting contributions of eight distinguished Muslim scholars."
+       data-ar="اكتشف أبرز مؤلفات ثمانية من علماء المسلمين، وموضوعاتهم الأساسية وتخصصاتهم العلمية وإسهاماتهم التي بقي أثرها عبر الزمن.">
+      Explore the major works, specializations, and lasting contributions of eight scholars.
+    </p>
+  </section>
+
+  <div class="tools">
+    <div class="search-wrap">
+      <input id="search" type="search"
+        data-placeholder-en="Search scholars, books, or subjects..."
+        data-placeholder-ar="ابحث عن عالم أو كتاب أو موضوع..."
+        placeholder="Search scholars, books, or subjects...">
+    </div>
+    <div class="count" id="count" aria-live="polite"></div>
+  </div>
+
+  <section class="grid" id="scholarGrid">
+
+    <!-- 1. Imam Al-Nawawi -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 01" data-ar="العالم ٠١">SCHOLAR 01</div>
+        <h3>Imam Al-Nawawi</h3>
+        <div class="dates">Died 676 AH / 1277 CE</div>
+        <span class="badge" data-en="Hadith & Jurisprudence" data-ar="الحديث والفقه">Hadith &amp; Jurisprudence</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Riyad al-Salihin</span>
+            <span class="work">Al-Arba'in al-Nawawiyya</span>
+            <span class="work">Al-Majmu' Sharh al-Muhadhdhab</span>
+            <span class="work">Sharh Sahih Muslim</span>
+          </div>
+          <p data-en="Riyad al-Salihin means 'Gardens of the Righteous,' and Al-Arba'in al-Nawawiyya means 'The Forty Nawawi Hadiths.'"
+             data-ar="رياض الصالحين، والأربعون النووية، والمجموع شرح المهذب، وشرح صحيح مسلم.">
+            Riyad al-Salihin means 'Gardens of the Righteous,' and Al-Arba'in al-Nawawiyya means 'The Forty Nawawi Hadiths.'
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Hadith collections and commentaries focusing on legal rulings, prophetic etiquette, character-building, and spiritual discipline."
+             data-ar="جمع الأحاديث النبوية وشرحها، مع التركيز على الأحكام الشرعية، والآداب النبوية، وبناء الأخلاق، وتهذيب النفس والانضباط الروحي.">
+            Hadith collections and commentaries focusing on legal rulings, prophetic etiquette, character-building, and spiritual discipline.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="A master Hafiz of Hadith, a leading jurist of the Shafi'i school, and a renowned ascetic."
+             data-ar="إمام حافظ متقن للحديث، وفقيه بارز في المذهب الشافعي، واشتهر بالزهد والعبادة.">
+            A master Hafiz of Hadith, a leading jurist of the Shafi'i school, and a renowned ascetic.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="Dedicated his life entirely to scholarship, teaching, and authorship. His works—especially Riyad al-Salihin and The Forty Hadiths—became foundational guides for Muslims worldwide. They connect deep scriptural knowledge with daily worship, character refinement, and remembrance of God."
+             data-ar="كرّس حياته للعلم والتعليم والتأليف. وأصبحت مؤلفاته، وخاصة رياض الصالحين والأربعون النووية، مراجع أساسية للمسلمين في أنحاء العالم. وقد جمعت بين عمق المعرفة بالنصوص الشرعية وتطبيقها في العبادات اليومية، وتهذيب الأخلاق، وذكر الله.">
+            Dedicated his life to scholarship, teaching, and authorship. His works became foundational guides for Muslims worldwide.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. Ibn Qayyim al-Jawziyya -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 02" data-ar="العالم ٠٢">SCHOLAR 02</div>
+        <h3>Ibn Qayyim al-Jawziyya</h3>
+        <div class="dates">Died 751 AH / 1350 CE</div>
+        <span class="badge" data-en="Spirituality & Islamic Law" data-ar="الروحانية والفقه الإسلامي">Spirituality &amp; Islamic Law</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Madarij al-Salikin</span>
+            <span class="work">Zad al-Ma'ad</span>
+            <span class="work">Al-Dawa wa al-Dawa</span>
+            <span class="work">I'lam al-Muwaqqi'in</span>
+          </div>
+          <p data-en="These titles are commonly translated as The Ranks of the Divine Seekers, Provisions of the Hereafter, The Disease and the Cure, and Informing the Signatories."
+             data-ar="من أشهر مؤلفاته: مدارج السالكين، وزاد المعاد، والداء والدواء، وإعلام الموقعين عن رب العالمين.">
+            These titles are commonly translated as The Ranks of the Divine Seekers, Provisions of the Hereafter, The Disease and the Cure, and Informing the Signatories.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Prophetic biography combined with legal deduction, the science of the heart, spiritual stations of faith, legal rulings, and remedies for spiritual and psychological ailments."
+             data-ar="السيرة النبوية وربطها باستنباط الأحكام الشرعية، وأعمال القلوب ومقامات الإيمان، والنوازل الفقهية، وسبل علاج أمراض القلب والنفس.">
+            Prophetic biography, legal deduction, spiritual stations, legal rulings, and remedies for spiritual ailments.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="A master scholar of Qur'anic exegesis, Hadith, Fiqh, legal theory, and Islamic spirituality. He was one of the foremost disciples of Ibn Taymiyyah."
+             data-ar="عالم بارز في التفسير والحديث والفقه وأصول الفقه والروحانية الإسلامية، وكان من أبرز تلاميذ شيخ الإسلام ابن تيمية.">
+            A master scholar of Qur'anic exegesis, Hadith, Fiqh, legal theory, and Islamic spirituality.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="Enriched Islamic literature with profound psychological and spiritual insights, connecting religious teachings with human nature. He is often described as a 'physician of the hearts,' offering lasting guidance on spiritual growth and ethical integrity."
+             data-ar="أثرى المكتبة الإسلامية بكتابات عميقة في النفس والروح، وربط النصوص الشرعية بطبيعة الإنسان. ويُوصف بأنه طبيب القلوب لما قدمه من توجيهات باقية في تزكية النفس والاستقامة الأخلاقية.">
+            Enriched Islamic literature with profound psychological and spiritual insights, connecting religious teachings with human nature.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Ibn Taymiyyah -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 03" data-ar="العالم ٠٣">SCHOLAR 03</div>
+        <h3>Shaykh al-Islam Ibn Taymiyyah</h3>
+        <div class="dates">Died 728 AH / 1328 CE</div>
+        <span class="badge" data-en="Creed & Scholarship" data-ar="العقيدة والعلوم الشرعية">Creed &amp; Scholarship</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Majmu' al-Fatawa</span>
+            <span class="work">Minhaj al-Sunna al-Nabawiyya</span>
+            <span class="work">Dar' Ta'arud al-'Aql wa al-Naql</span>
+            <span class="work">Al-'Aqidah al-Wasitiyya</span>
+          </div>
+          <p data-en="These works address religious verdicts, theological debates, and Islamic creed."
+             data-ar="تتناول هذه الكتب الفتاوى الشرعية، والمسائل العقدية والفكرية، وبيان العقيدة الإسلامية.">
+            These works address religious verdicts, theological debates, and Islamic creed.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Refutation of philosophical and theological doubts, discussion of Islamic creed and religious innovations, and extensive studies in Fiqh, Tafsir, and Islamic governance."
+             data-ar="الرد على الشبهات الفلسفية والكلامية، وبحث العقيدة الإسلامية والبدع، ومؤلفات واسعة في الفقه والتفسير والسياسة الشرعية.">
+            Refutation of philosophical and theological doubts, Islamic creed, Fiqh, Tafsir, and governance.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="A polymath, reformer, and authority in Tafsir, Hadith, comparative jurisprudence, and philosophy."
+             data-ar="عالم موسوعي ومصلح، ومرجع في التفسير والحديث والفقه المقارن والفلسفة.">
+            A polymath, reformer, and authority in Tafsir, Hadith, comparative jurisprudence, and philosophy.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="Defended his understanding of Islamic orthodoxy through scholarship and public engagement during a period of major political upheaval, including the Mongol invasions. His extensive writings remain an important reference in scholarly debate, critical thinking, and the study of religious texts."
+             data-ar="دافع عن منهجه العلمي في فهم العقيدة والشريعة بالعلم والمواقف العامة خلال فترة شهدت اضطرابات سياسية كبرى، ومنها الغزوات المغولية. ولا تزال مؤلفاته الواسعة مرجعًا مهمًا في البحث العلمي والنقاش الفكري ودراسة النصوص الشرعية.">
+            Defended his understanding of Islamic orthodoxy through scholarship during a period of major political upheaval.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. Al-Bukhari -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 04" data-ar="العالم ٠٤">SCHOLAR 04</div>
+        <h3>Imam Al-Bukhari</h3>
+        <div class="dates">Died 256 AH / 870 CE</div>
+        <span class="badge" data-en="Hadith & Narration" data-ar="الحديث وروايته">Hadith &amp; Narration</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Al-Jami' al-Sahih</span>
+            <span class="work">Al-Adab al-Mufrad</span>
+            <span class="work">Al-Tarikh al-Kabir</span>
+          </div>
+          <p data-en="Al-Jami' al-Sahih is commonly known as Sahih al-Bukhari."
+             data-ar="الجامع الصحيح المعروف باسم صحيح البخاري، والأدب المفرد، والتاريخ الكبير.">
+            Al-Jami' al-Sahih is commonly known as Sahih al-Bukhari.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Compilation of Prophetic traditions selected according to rigorous transmission criteria, recording prophetic ethics and manners, and evaluating the biographies and reliability of Hadith narrators."
+             data-ar="جمع الأحاديث النبوية وفق معايير دقيقة للرواية، وتدوين الأخلاق والآداب النبوية، ودراسة تراجم رواة الحديث ومدى موثوقيتهم.">
+            Compilation of Prophetic traditions, prophetic ethics, and evaluation of Hadith narrators.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="Known as Amir al-Mu'minin fi al-Hadith, a title reflecting his exceptional authority in Hadith, and a master critic of narrations."
+             data-ar="اشتهر بلقب أمير المؤمنين في الحديث، وهو لقب يعكس مكانته الرفيعة في علم الحديث، وتميّز بنقد الروايات وتمحيصها.">
+            Known as Amir al-Mu'minin fi al-Hadith and a master critic of narrations.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="Through rigorous authentication, Al-Bukhari made an enduring contribution to preserving the Sunnah of Prophet Muhammad ﷺ and distinguishing reliable narrations from others. His Sahih is regarded by Sunni Muslims as the most authentic Hadith collection."
+             data-ar="أسهم البخاري من خلال منهجه الدقيق في تصحيح الأحاديث في حفظ سنة النبي محمد ﷺ وتمييز الروايات المقبولة من غيرها. ويُعد صحيحه أصح كتب الحديث عند أهل السنة.">
+            Al-Bukhari made an enduring contribution to preserving the Sunnah through rigorous authentication.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. Ibn Kathir -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 05" data-ar="العالم ٠٥">SCHOLAR 05</div>
+        <h3>Ibn Kathir</h3>
+        <div class="dates">Died 774 AH / 1373 CE</div>
+        <span class="badge" data-en="Qur'an & History" data-ar="القرآن والتاريخ">Qur'an &amp; History</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Tafsir al-Qur'an al-Azim</span>
+            <span class="work">Al-Bidaya wa al-Nihaya</span>
+            <span class="work">Tabaqat al-Shafi'iyya</span>
+          </div>
+          <p data-en="These works include his famous Qur'anic commentary, a major historical chronicle, and a work on Shafi'i scholars."
+             data-ar="تشمل مؤلفاته تفسير القرآن العظيم، والبداية والنهاية، وطبقات الشافعية.">
+            These works include his famous Qur'anic commentary and historical chronicle.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Qur'anic exegesis using transmitted evidence (Tafsir bil-Ma'thur), interpreting the Qur'an through the Qur'an, Hadith, and the statements of the Companions, alongside comprehensive history from creation to his own era."
+             data-ar="تفسير القرآن بالمأثور، أي تفسير القرآن بالقرآن وبالأحاديث النبوية وأقوال الصحابة، إلى جانب تدوين التاريخ الشامل منذ بدء الخليقة وحتى عصره.">
+            Qur'anic exegesis using transmitted evidence and comprehensive historical writing.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="A distinguished Qur'anic exegete, historian, jurist, and Hadith scholar."
+             data-ar="مفسر بارز للقرآن الكريم، ومؤرخ، وفقيه، وعالم بالحديث النبوي.">
+            A distinguished Qur'anic exegete, historian, jurist, and Hadith scholar.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="His Tafsir remains an important reference for understanding the Qur'an through scriptural context and transmitted explanations. Al-Bidaya wa al-Nihaya is a monumental historical chronicle covering religious and human history."
+             data-ar="لا يزال تفسيره مرجعًا مهمًا لفهم القرآن في ضوء النصوص الشرعية والتفسيرات المنقولة. أما كتاب البداية والنهاية فهو موسوعة تاريخية كبيرة تتناول التاريخ الديني والإنساني.">
+            His Tafsir remains an important reference, while Al-Bidaya wa al-Nihaya is a major historical chronicle.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. Al-Ghazali -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 06" data-ar="العالم ٠٦">SCHOLAR 06</div>
+        <h3>Imam Al-Ghazali</h3>
+        <div class="dates">Died 505 AH / 1111 CE</div>
+        <span class="badge" data-en="Ethics & Theology" data-ar="الأخلاق والعقيدة">Ethics &amp; Theology</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Ihya' Ulum al-Din</span>
+            <span class="work">Al-Mustasfa fi Ilm al-Usul</span>
+            <span class="work">Al-Munqidh min al-Dalal</span>
+            <span class="work">Tahafut al-Falasifa</span>
+          </div>
+          <p data-en="Their English titles include The Revival of the Religious Sciences, The Deliverer from Error, and The Incoherence of the Philosophers."
+             data-ar="من أشهر مؤلفاته إحياء علوم الدين، والمستصفى في علم الأصول، والمنقذ من الضلال، وتهافت الفلاسفة.">
+            Their English titles include The Revival of the Religious Sciences and The Deliverer from Error.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Reviving religious awareness and ethics, examining spiritual practices, engaging with philosophical questions and skepticism, and developing legal theory and logic."
+             data-ar="إحياء الوعي الديني والأخلاق، وبحث الممارسات الروحية، ومناقشة القضايا الفلسفية والشكوك الفكرية، وتطوير أصول الفقه والمنطق.">
+            Reviving religious awareness and ethics, examining philosophy, and developing legal theory.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="Known as Hujjat al-Islam, or the Proof of Islam. He was a philosopher, theologian, Shafi'i jurist, and influential thinker on ethics and the human soul."
+             data-ar="عُرف بلقب حجة الإسلام، وكان فيلسوفًا ومتكلّمًا وفقيهًا شافعيًا ومفكرًا مؤثرًا في الأخلاق وأحوال النفس.">
+            Known as Hujjat al-Islam, or the Proof of Islam.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="He connected outward religious practice with inward spiritual development. His writings influenced Muslim education and spiritual life, emphasizing awareness of God, sincerity, sound ethical conduct, and intellectual integrity."
+             data-ar="ربط بين الالتزام الظاهر بالشريعة والتزكية الروحية الباطنة. وأثّرت مؤلفاته في التعليم والحياة الروحية للمسلمين، مؤكدة أهمية مراقبة الله والإخلاص وحسن الأخلاق والنزاهة الفكرية.">
+            He connected outward religious practice with inward spiritual development.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. Ibn Al-Jawzi -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 07" data-ar="العالم ٠٧">SCHOLAR 07</div>
+        <h3>Ibn Al-Jawzi</h3>
+        <div class="dates">Died 597 AH / 1201 CE</div>
+        <span class="badge" data-en="Preaching & History" data-ar="الوعظ والتاريخ">Preaching &amp; History</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Sayd al-Khatir</span>
+            <span class="work">Talbis Iblis</span>
+            <span class="work">Al-Mawdu'at</span>
+            <span class="work">Al-Muntazam</span>
+            <span class="work">Safwat al-Safwa</span>
+          </div>
+          <p data-en="These works cover personal reflections, deception and spiritual pitfalls, fabricated Hadiths, historical chronicles, and biographies of exemplary people."
+             data-ar="تتناول هذه الكتب التأملات الشخصية، ومداخل الشيطان، والأحاديث الموضوعة، والتاريخ، وتراجم الشخصيات التي يُقتدى بها.">
+            These works cover personal reflections, fabricated Hadiths, history, and biographies.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Spiritual and educational reflections, exposing subtle spiritual and intellectual pitfalls, examining fabricated Hadiths, and recording historical biographies."
+             data-ar="التأملات التربوية والروحية، والكشف عن المزالق الفكرية والروحية الخفية، وفحص الأحاديث الموضوعة، وتدوين التراجم التاريخية.">
+            Spiritual reflections, examination of fabricated Hadiths, and historical biographies.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="An eloquent preacher, historian, prolific author, encyclopedic scholar, and critic of Hadith narrations."
+             data-ar="واعظ بليغ، ومؤرخ، وغزير التأليف، وعالم موسوعي، وناقد لروايات الحديث.">
+            An eloquent preacher, historian, prolific author, and Hadith critic.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="He used his eloquence to inspire people and encourage better conduct. He devoted considerable effort to examining unauthentic narrations and addressing religious practices he considered incorrect. His reflective works, including Sayd al-Khatir, continue to encourage thought and self-improvement."
+             data-ar="استخدم بلاغته للتأثير في الناس وإصلاح السلوك. وبذل جهدًا كبيرًا في فحص الروايات غير الصحيحة ومناقشة الممارسات الدينية التي رأى أنها غير سليمة. ولا تزال مؤلفاته التأملية، ومنها صيد الخاطر، تحفّز على التفكير ومحاسبة النفس.">
+            He used his eloquence to inspire people and encourage better conduct.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8. Imam Al-Shafi'i -->
+    <article class="scholar">
+      <div class="card-top">
+        <div class="number" data-en="SCHOLAR 08" data-ar="العالم ٠٨">SCHOLAR 08</div>
+        <h3>Imam Al-Shafi'i</h3>
+        <div class="dates">Died 204 AH / 820 CE</div>
+        <span class="badge" data-en="Islamic Jurisprudence" data-ar="الفقه الإسلامي">Islamic Jurisprudence</span>
+      </div>
+
+      <div class="card-body">
+        <div class="section">
+          <h4 data-en="Major Works" data-ar="أبرز المؤلفات">Major Works</h4>
+          <div class="works">
+            <span class="work">Al-Risala</span>
+            <span class="work">Al-Umm</span>
+            <span class="work">Diwan al-Imam al-Shafi'i</span>
+          </div>
+          <p data-en="These works address legal methodology, jurisprudence, and poetry attributed to Imam Al-Shafi'i."
+             data-ar="تتناول هذه المؤلفات أصول الفقه والفقه الإسلامي، وتضم أشعارًا وحكمًا منسوبة إلى الإمام الشافعي.">
+            These works address legal methodology, jurisprudence, and poetry.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Core Subject Matter" data-ar="الموضوعات الأساسية">Core Subject Matter</h4>
+          <p data-en="Systematic formulation of Islamic legal theory (Usul al-Fiqh), comparative jurisprudence, and poetry emphasizing wisdom, virtue, and scholarship."
+             data-ar="التأسيس المنهجي لعلم أصول الفقه، والفقه المقارن، والشعر الذي يبرز الحكمة والفضيلة وطلب العلم.">
+            Systematic formulation of Islamic legal theory, comparative jurisprudence, and poetry.
+          </p>
+        </div>
+
+        <div class="section">
+          <h4 data-en="Academic Specialization" data-ar="التخصص العلمي">Academic Specialization</h4>
+          <p data-en="A defender of the Sunnah, founder of an independent legal school, and a scholar traditionally associated with the renewal of the second Islamic century."
+             data-ar="من المدافعين عن السنة النبوية، ومؤسس المذهب الشافعي، ومن العلماء الذين ارتبط اسمهم بتجديد العلم في القرن الثاني الهجري.">
+            A defender of the Sunnah and founder of an independent legal school.
+          </p>
+        </div>
+
+        <div class="section legacy">
+          <h4 data-en="Service to Islam & Legacy" data-ar="خدمته للإسلام وإرثه العلمي">Service to Islam &amp; Legacy</h4>
+          <p data-en="He helped establish Usul al-Fiqh as a systematic discipline, providing a rigorous framework for deriving legal rulings from Islamic sources. By engaging with scholarly approaches associated with the Hijaz and Iraq, his work helped organize legal reasoning for generations of Muslim scholars."
+             data-ar="أسهم في ترسيخ علم أصول الفقه بوصفه منهجًا منظمًا لاستنباط الأحكام من مصادر الشريعة. ومن خلال مناقشة المناهج العلمية المرتبطة بالحجاز والعراق، ساعدت أعماله في تنظيم الاستدلال الفقهي لأجيال من العلماء المسلمين.">
+            He helped establish Usul al-Fiqh as a systematic discipline for deriving legal rulings.
+          </p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="no-results" id="noResults"
+       data-en="No scholars found. Try another name, book, or subject."
+       data-ar="لم يتم العثور على نتائج. جرّب اسمًا أو كتابًا أو موضوعًا آخر.">
+    No scholars found. Try another name, book, or subject.
+  </div>
+
+  <section class="intro" id="about" style="margin-top:65px">
+    <h2 data-en="Knowledge That Continues to Guide"
+        data-ar="علم يستمر أثره عبر الأجيال">
+      Knowledge That Continues to Guide
+    </h2>
+    <p data-en="This educational project highlights the scholarship, writings, and enduring contributions of eight influential Muslim scholars."
+       data-ar="يسلط هذا المشروع التعليمي الضوء على علم ثمانية من علماء المسلمين ومؤلفاتهم وإسهاماتهم التي بقي أثرها عبر الأجيال.">
+      This educational project highlights the scholarship and contributions of eight influential Muslim scholars.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <strong>Guiding Lights | علماء خدموا الإسلام</strong>
+  <p data-en="An educational project about Islamic scholarship."
+     data-ar="مشروع تعليمي عن علماء خدموا الإسلام.">
+    An educational project about Islamic scholarship.
+  </p>
+</footer>
+
+<script>
+let language = "en";
+
+const languageBtn = document.getElementById("languageBtn");
+const search = document.getElementById("search");
+const cards = [...document.querySelectorAll(".scholar")];
+const count = document.getElementById("count");
+const noResults = document.getElementById("noResults");
+
+function changeLanguage() {
+  language = language === "en" ? "ar" : "en";
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-en][data-ar]").forEach(element => {
+    element.textContent = element.dataset[language];
+  });
+
+  search.placeholder = search.dataset[
+    language === "en" ? "placeholderEn" : "placeholderAr"
+  ];
+
+  languageBtn.textContent = language === "en" ? "العربية" : "English";
+
+  updateSearch();
+}
+
+function updateSearch() {
+  const term = search.value.trim().toLowerCase();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    const matches = text.includes(term);
+    card.hidden = !matches;
+    if (matches) visible++;
+  });
+
+  count.textContent = language === "en"
+    ? `Showing ${visible} of ${cards.length} scholars`
+    : `عرض ${visible} من أصل ${cards.length} علماء`;
+
+  noResults.style.display = visible ? "none" : "block";
+}
+
+languageBtn.addEventListener("click", changeLanguage);
+search.addEventListener("input", updateSearch);
+
+updateSearch();
+</script>
+
+</body>
+</html>
